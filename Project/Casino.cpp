@@ -1,20 +1,20 @@
 #include <iostream>
 #include <ctime>
-
+double balance;
 void rules()
 {
-    std::cout << "\n\n\n\t\t\t\tRULES";
-    std::cout << "\n1: Choose Number between 1-10";
-    std::cout << "\n2: Winning amount is twice the amount of bet entered";
-    std::cout << "\n3: Losing amount is the amount of bet entered";
+    std::cout << "\t\t\t\tRULES";
+    std::cout << "\n1: Choose Number to guess between 1-10";
+    std::cout << "\n2: Winning amount is five times the amount of bet entered";
+    std::cout << "\n3: Losing amount is twice the amount of bet entered";
     std::cout << "\nGood Luck !!";
+    std::cout << "\nCurrent Balance: $" << balance;
 }
 
 int main()
 {
     int choice;
-    int balance;
-    int bet;
+    double bet;
     int guess;
     int random;
     int dice;
@@ -24,11 +24,12 @@ int main()
     std::cout << "\n      W   W   W   EEE   L      C     O   O M  M   M  M EEE    !!";
     std::cout << "\n       W W W W    E     L      C     O   O M   M M   M E      !!";
     std::cout << "\n        W   W     EEEEE LLLLL  CCCCC OOOOO M    M    M EEEEE  !!";
-    rules();
-    std::cout << "\nEnter Balance: $";
+    std::cout << "\n\n\nEnter Balance: $";
     std::cin >> balance;
     do
     {
+        system("cls");
+        rules();
         do
         {
             std::cout << "\nEnter amount to bet: $";
@@ -51,17 +52,17 @@ int main()
 
         } while (guess <= 0 || guess > 10);
 
-        dice = rand() % 10;
+        dice = rand() % 10 + 1;
         if (dice == guess)
         {
             std::cout << "\nCongratulations, You Won !!";
-            balance += (bet * 2);
+            balance += (bet * 5);
             std::cout << "\nNew Balance: $" << balance;
         }
         else
         {
             std::cout << "\nSorry, You Lost :(";
-            balance -= bet;
+            balance -= bet * 2;
             std::cout << "\nNew Balance: $" << balance;
         }
         std::cout << "\nThe Winning Number: " << dice;
